@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Ninja | <%= title %></title>
+    <title>Course Manager | <%= title %></title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
         body{
@@ -15,7 +15,7 @@
           margin: 0;
           padding: 0;
           text-decoration: none;
-          color: #222;
+          color: #120101;
         }
     
         /* nav & footer styles */
@@ -57,8 +57,11 @@
         }
         .content{
           margin-left: 20px;
+          margin-bottom: 30px;
         }
-    
+        .create-blog {
+          display: flex;
+        }
         /* index styles */
     
         /* details styles */
@@ -74,13 +77,15 @@
           width: 100%;
           margin: 10px 0;
           padding: 8px;
+        
         }
         .create-blog label{
           display: block;
           margin-top: 24px;
         }
         textarea{
-          height: 120px;
+          height: 250px;
+          width: 670;
         }
         .create-blog button{
           margin-top: 20px;
@@ -90,6 +95,14 @@
           border: 0;
           font-size: 1.2em;
           cursor: pointer;
+        }
+
+        .border {
+          border-width: 2px;
+        }
+
+        .course {
+          margin-bottom: 20px;
         }
       </style>
 </head>
