@@ -48,12 +48,7 @@ greet();
   })
   });
 
-/*
-  res.write('<p>Yoooo!</p>');
-  res.write('<p>Yoooo!</p>');
-  res.end();
-});
-*/
+
 server.listen(3000, 'localhost', () => {
   console.log('listening for requests on port 3000');
 });
