@@ -7,23 +7,30 @@
 
   <div class="create-blog content">
     <form id="courseForm">
+
       <label for="title">Course Name:</label>
       <input type="text" id="title" name="title" required>
+
       <label for="body">Course description:</label>
       <textarea id="body" name="body" required></textarea>
+
       <button type="submit">Add Course</button>
+
     </form>
+
     <form id="courseSearch">
       <label for="title">Course Name:</label>
       <input type="text" id="title" name="title" required>
+
       <label for="snippet">Course ID:</label>
       <input type="text" id="snippet" name="snippet" required>
+
       <button>Search</button>
+    
     </form>
   </div>
 
   <%- include("./partials/footer.ejs") %>
-
   
 </body>
 </html>
