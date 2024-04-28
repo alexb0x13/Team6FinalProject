@@ -5,27 +5,35 @@ var cors = require('cors')
 // express app 
 
 const bodyParser = require('body-parser')
-const Course = require('./models/courses')
+const Course = require('./models/course')
 const app = express()
 app.use(cors())
 
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 const router = express.Router()
 
-router.get('/courses', function(req, res) {
-  let query = {}
-  if (req.query.name) {
-    query = {name : req.query.name}
+router.get('/courses', async(req, res) =>{
+  try {
+    const courses = await Course.find({})
+    res.send(courses)
+    console.log(courses)
   }
-  // find method built into Mongoose
-  Course.find(query, function(err, courses) {
-    if (err) {
-      res.status(400).send(err)
-    }
-    else {
-      res.json(courses)
-    }
-  })
+  catch (err) {
+    console.log(err)
+  }
+});
+
+app.post('/teachers', async(req, res) =>{
+  try {
+    console.log(req.body)
+    const course = new Course(req.body)
+    await course.save()
+    res.status(201).json(course)
+    console.log(course)
+  }
+  catch(err) {
+    res.status(400).send(err)
+  }
 })
 
 // register view engine
@@ -39,10 +47,8 @@ app.use(express.static('public'));
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
-  const blogs = [
-    
-  ];
-  res.render('index', { title: 'Home', blogs });
+  const courses = [];
+  res.render('index', { title: 'Home', courses });
 });
 
 app.get('/teachers', (req, res) => {

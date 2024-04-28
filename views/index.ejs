@@ -4,14 +4,14 @@
 <body>
   <%- include("./partials/nav.ejs") %>
 
-  <div class="blogs content">
+  <div class="course content">
     <h2>Your Courses</h2>
 
-    <% if (blogs.length > 0) { %>
-      <% blogs.forEach(blog => { %>
+    <% if (courses.length > 0) { %>
+      <% courses.forEach(blog => { %>
 
-        <h3 class="title"><%= blog.title %></h3>
-        <p class="snippet"><%= blog.snippet %></p>
+        <h3 class="title"><%= course.title %></h3>
+        <p class="snippet"><%= course.snippet %></p>
 
       <% }) %>
     <% } else { %>

@@ -2,8 +2,7 @@ const db = require('../db')
 
 const Course = db.model("Course", {
     name: {type: String, required: true},
-    dept: {String},
-    desc: {String}, 
+    desc: {type: String}, 
 })
 
-module.exports = Course
+module.exports = Course;
