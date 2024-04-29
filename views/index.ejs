@@ -8,10 +8,10 @@
     <h2>Your Courses</h2>
 
     <% if (courses.length > 0) { %>
-      <% courses.forEach(blog => { %>
+      <% courses.forEach(course => { %>
 
-        <h3 class="title"><%= course.title %></h3>
-        <p class="snippet"><%= course.snippet %></p>
+        <h3 class="title"><%= course.name %></h3>
+        <p class="snippet"><%= course.desc %></p>
 
       <% }) %>
     <% } else { %>

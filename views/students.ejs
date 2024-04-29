@@ -5,8 +5,7 @@
   <%- include("./partials/nav.ejs") %>
 
   <div class="about content">
-    <h2>Course List</h2><em>By 2025,</em> half of Indiana's new jobs are going to require a post-secondary degree or certificate. To help you prepare,
-     Team Six Tech offers a large variety of degrees, certificates, and workforce certifications in over 70 programs. Find the credential that fits your career interests below..</p>
+    <h2>Course List</h2>
   </div>
   <div class="course-catalog">
     <div class="course">
@@ -17,13 +16,37 @@
     </div>
   </div>
    
-    <select name="course" id="course">
-      <option value="course1">Course 1</option>
-      <option value="course2">Course 2</option>
-      <option value="course3">Course 3</option>
-      <!-- Add more options as needed -->
+  <select name="course" id="course-select">
+    <!-- Options will be dynamically populated here -->
   </select>
-  
+
+  <script>
+    // Fetch courses from the server
+    fetch('/courses')
+      .then(response => response.json())
+      .then(data => {
+        const courseSelect = document.getElementById('course-select');
+    
+        // Clear existing options
+        courseSelect.innerHTML = '';
+    
+        // Add default option
+        const defaultOption = document.createElement('option');
+        defaultOption.text = 'Select a course';
+        courseSelect.appendChild(defaultOption);
+    
+        // Add options for each course
+        data.forEach(course => {
+          const option = document.createElement('option');
+          option.value = course._id; // Assuming the course has an _id field
+          option.text = course.name; // Display the course name
+          courseSelect.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching courses:', error);
+      });    
+  </script>
 
   <%- include("./partials/footer.ejs") %>
 </body>

@@ -28,10 +28,11 @@ app.post('/teachers', async(req, res) =>{
     console.log(req.body)
     const course = new Course(req.body)
     await course.save()
-    res.status(201).json(course)
     console.log(course)
-  }
-  catch(err) {
+
+    res.render('teachers', { title: 'Teachers' } );
+    
+  }catch(err) {
     res.status(400).send(err)
   }
 })
@@ -46,8 +47,8 @@ app.listen(3000);
 app.use(express.static('public'));
 app.use(morgan('dev'));
 
-app.get('/', (req, res) => {
-  const courses = [];
+app.get('/', async (req, res) => {
+  const courses = await Course.find({});
   res.render('index', { title: 'Home', courses });
 });
 

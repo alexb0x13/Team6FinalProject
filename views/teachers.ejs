@@ -1,36 +1,93 @@
+<!-- index.ejs -->
 <html lang="en">
 <%- include("./partials/head.ejs") %>
 
 <body>
   <%- include("./partials/nav.ejs") %>
 
-
   <div class="create-blog content">
-    <form id="courseForm" method="POST">
+    <!-- Form for adding a new course -->
+<form id="addCourseForm">
+  <label for="name">Course Name:</label>
+  <input type="text" id="name" name="name" required>
+  
+  <label for="desc">Course Description:</label>
+  <textarea id="desc" name="desc" required></textarea>
+  
+  <label for="dept">Department:</label>
+  <input type="text" id="dept" name="dept">
+  
+  <button type="submit">Add Course</button>
+</form>
 
-      <label for="name">Course Name:</label>
-      <input type="text" id="name" name="name" required>
+<!-- Displaying the course list -->
+<table id="courseTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Department</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="courseList">
+    <!-- Course list will be dynamically populated here -->
+  </tbody>
+</table>
 
-      <label for="body">Course description:</label>
-      <textarea id="body" name="desc" required></textarea>
+<!-- Button to fetch the course list -->
+<button id="fetchCoursesButton">Fetch Course List</button>
 
-      <button type="submit">Add Course</button>
+<!-- Form for updating a course -->
+<form id="updateCourseForm">
+  <input type="hidden" id="courseId" name="courseId">
+  
+  <label for="updateName">Updated Course Name:</label>
+  <input type="text" id="updateName" name="updateName" required>
+  
+  <label for="updateDesc">Updated Course Description:</label>
+  <textarea id="updateDesc" name="updateDesc" required></textarea>
+  
+  <label for="updateDept">Updated Department:</label>
+  <input type="text" id="updateDept" name="updateDept">
+  
+  <button type="submit">Update Course</button>
+</form>
 
-    </form>
 
+    <!-- Form for searching for a course by name or ID -->
     <form id="courseSearch">
-      <label for="title">Course Name:</label>
-      <input type="text" id="title" name="title" required>
+      <label for="searchName">Search by Name:</label>
+      <input type="text" id="searchName" name="searchName">
 
-      <label for="snippet">Course ID:</label>
-      <input type="text" id="snippet" name="snippet" required>
+      <label for="searchID">Search by ID:</label>
+      <input type="text" id="searchID" name="searchID">
 
-      <button>Search</button>
-    
+      <button type="button" id="searchButton">Search</button>
     </form>
-  </div>
+
+    <!-- Table to display the list of courses -->
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="courseList">
+        <!-- Courses will be dynamically populated here -->
+      </tbody>
+    </table>
+
+
+  <!-- Button to delete a course -->
+<button id="deleteCourseButton">Delete Course</button>
+</div>
 
   <%- include("./partials/footer.ejs") %>
-  
+
+  <!-- Include script for handling CRUD operations -->
+  <script src="/scripts/crud.js"></script>
 </body>
 </html>
